@@ -5,9 +5,9 @@ if [ "$#" -ne 4 ]; then
     exit 1
 fi
 
-MODEL=$1
-CSC=$2
-IMEI=$3
+MODEL=SM-A225F
+CSC=BKD
+IMEI=350167020473859
 
 # Download stock firmware.
 sudo bash scripts/download_firmware.sh $MODEL $CSC $IMEI $MODEL
