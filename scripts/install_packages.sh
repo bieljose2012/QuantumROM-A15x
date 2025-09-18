@@ -16,9 +16,9 @@
 #    exit 1
 # fi
 
-#    # Linux setup:
-#    apt update -y && apt upgrade -y
-#    apt install -y p7zip-full lz4 android-sdk-libsparse-utils wget python3 python3-pip
+# Linux setup:
+apt update -y && apt upgrade -y
+apt install -y p7zip-full lz4 android-sdk-libsparse-utils wget python3 python3-pip
 
 # Installing Python Packages:
 pip3 install liblp
