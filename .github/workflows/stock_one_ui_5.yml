@@ -25,17 +25,17 @@ jobs:
     runs-on: ubuntu-22.04
 
     steps:
-    - name: Checkout repository
+    - name: Checkout repository.
       uses: actions/checkout@v3
 
-    - name: Validate device support
+    - name: Validate device support.
       run: |
         if [ ! -d "./QuantumROM/Devices/${{ github.event.inputs.SUPPORT_MODEL }}" ]; then
           echo "⛔️ Your device '${{ github.event.inputs.SUPPORT_MODEL }}' is not ready for port target ROM."
           exit 1
         fi
 
-    - name: Installing required packages
+    - name: Installing required packages.
       run: |
         chmod +x ./scripts/install_packages.sh
         sudo bash ./scripts/install_packages.sh
@@ -57,42 +57,4 @@ jobs:
     - name: Start making ROM
       run: |
         chmod +x ./scripts/make_rom.sh
-        sudo bash ./scripts/make_rom.sh
-          echo "❌ Your device '${{ github.event.inputs.SUPPORT_MODEL }}' is not ready for port target ROM."
-          exit 1
-        fi
-
-    - name: Installing required packages
-      run: |
-        chmod +x ./scripts/install_packages.sh
-        sudo bash ./scripts/install_packages.sh
-
-    - name: Downloading / extracting ${{ github.event.inputs.TARGET_MODEL }} firmware
-      run: |
-        chmod +x ./scripts/download_firmware.sh
-        sudo bash ./scripts/download_firmware.sh \
-          ${{ github.event.inputs.TARGET_MODEL }} \
-          ${{ github.event.inputs.TARGET_CSC }} \
-          ${{ github.event.inputs.TARGET_IMEI }} \
-          ${{ github.event.inputs.TARGET_MODEL }}
-
-    - name: Downloading / extracting ${SUPPORT_MODEL} firmware
-      run: |
-        chmod +x ./QuantumROM/Devices/${SUPPORT_MODEL}/${SUPPORT_MODEL}.sh
-        sudo bash ./QuantumROM/Devices/${SUPPORT_MODEL}/${SUPPORT_MODEL}.sh \
-
-    - name: Start making ROM
-      run: |
-        chmod +x ./scripts/make_rom.sh
-        sudo bash ./scripts/make_rom.sh      run: |
-        chmod +x ./scripts/download_firmware.sh
-        sudo bash ./scripts/download_firmware.sh \
-          ${{ github.event.inputs.MODEL }} \
-          ${{ github.event.inputs.CSC }} \
-          ${{ github.event.inputs.IMEI }} \
-          ${{ github.event.inputs.ROM_TYPE }}
-
-    - name: Start making ROM
-      run: |
-        chmod +x ./scripts/make_rom.sh
-        sudo bash ./scripts/make_rom.sh
+        # sudo bash ./scripts/make_rom.sh
