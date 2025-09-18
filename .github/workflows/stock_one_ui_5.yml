@@ -1,0 +1,29 @@
+name: Stock One UI 5 Rom Mod
+
+on:
+  push:
+    branches: [ master ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Install required packages
+      run: |
+        chmod +x ./scripts/install_packages.sh
+        sudo bash ./scripts/install_packages.sh
+
+    - name: Download firmware
+      run: |
+        chmod +x ./scripts/download_firmware.sh
+        sudo bash ./scripts/download_firmware.sh SM-A225F BKD 350167020473859 Stock
+
+    - name: Start making ROM
+      run: |
+        # chmod +x ./scripts/make_rom.sh
+        # sudo bash ./scripts/make_rom.sh
