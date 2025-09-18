@@ -17,7 +17,7 @@ on:
         required: true
         default: "350167020473859"
       STOCK_ROM_TYPE:
-        description: "STOCK: ROM Type (Stock)"
+        description: "STOCK: ROM type (Stock)"
         required: true
         default: "Stock"
 
@@ -35,7 +35,7 @@ on:
         required: true
         default: "350167020473859"
       TARGET_ROM_TYPE:
-        description: "[TARGET] Device Model"
+        description: "[TARGET] Device ROM type"
         required: true
         default: "Target"
 
