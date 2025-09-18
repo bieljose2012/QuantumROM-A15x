@@ -18,7 +18,7 @@ jobs:
         chmod +x ./scripts/install_packages.sh
         sudo bash ./scripts/install_packages.sh
 
-    - name: Downloading firmware
+    - name: Downloading / extracting firmware
       run: |
         chmod +x ./scripts/download_firmware.sh
         sudo bash ./scripts/download_firmware.sh SM-A225F BKD 350167020473859 Stock
