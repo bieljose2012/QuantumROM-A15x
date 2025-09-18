@@ -5,9 +5,9 @@ on:
     inputs:
       # Support Device Model
       SUPPORT_MODEL:
-        description: "=== MAKE ROM FOR === Device Model"
+        description: "==== MAKE ROM FOR ==== Device Model"
         required: true
-        default: "SM-S711B"
+        default: "SM-A225F"
       
       # TARGET rom section
       TARGET_MODEL:
@@ -21,7 +21,7 @@ on:
       TARGET_IMEI:
         description: "TARGET: IMEI Number"
         required: true
-        default: "350167020473859"
+        default: "355195302007124"
 
 jobs:
   build:
