@@ -1,9 +1,24 @@
 name: Stock One UI 5 Rom Mod
 
 on:
-  push:
-    branches: [ master ]
   workflow_dispatch:
+    inputs:
+      MODEL:
+        description: "Device Model"
+        required: true
+        default: "SM-A225F"
+      CSC:
+        description: "CSC Code"
+        required: true
+        default: "BKD"
+      IMEI:
+        description: "IMEI Number"
+        required: true
+        default: "350167020473859"
+      ROM_TYPE:
+        description: "ROM Type (e.g. Stock, Target)"
+        required: true
+        default: "Stock"
 
 jobs:
   build:
@@ -21,9 +36,13 @@ jobs:
     - name: Downloading / extracting firmware
       run: |
         chmod +x ./scripts/download_firmware.sh
-        sudo bash ./scripts/download_firmware.sh SM-A225F BKD 350167020473859 Stock
+        sudo bash ./scripts/download_firmware.sh \
+          ${{ github.event.inputs.MODEL }} \
+          ${{ github.event.inputs.CSC }} \
+          ${{ github.event.inputs.IMEI }} \
+          ${{ github.event.inputs.ROM_TYPE }}
 
     - name: Start making ROM
       run: |
-        # chmod +x ./scripts/make_rom.sh
-        # sudo bash ./scripts/make_rom.sh
+        chmod +x ./scripts/make_rom.sh
+        sudo bash ./scripts/make_rom.sh
