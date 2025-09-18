@@ -74,6 +74,4 @@ echo "Saved to: ${DOWNLOAD_DIR}/${D_FOLDER}/${MODEL}_${CSC}_${fw_build_version}.
 rm -f "$enc_file"
 
 # --- Extract Firmware ---
-ls
-pwd
 sudo bash $(pwd)/scripts/extract_firmware.sh "$D_FOLDER" "${MODEL}_${CSC}_${fw_build_version}.zip"
