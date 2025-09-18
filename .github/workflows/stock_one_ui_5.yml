@@ -33,7 +33,7 @@ jobs:
 
     - name: Validate device support.
       run: |
-        if [ ! -d "./QuantumROM/Devices/${{ GITHUB.EVENT.INPUTS.STOCK_MODEL }}" ]; then
+        if [ ! -d "./QuantumROM/Devices/${{ ${{ github.event.inputs.SUPPORT_MODEL }} \ }}" ]; then
           echo "❌ Your device '${{ github.event.inputs.SUPPORT_MODEL }}' is not ready for port target ROM."
           exit 1
         fi
@@ -43,23 +43,19 @@ jobs:
         chmod +x ./scripts/install_packages.sh
         sudo bash ./scripts/install_packages.sh
 
-    - name: Downloading / extracting STOCK firmware
-      run: |
-        chmod +x ./scripts/download_firmware.sh
-        sudo bash ./scripts/download_firmware.sh \
-          ${{ github.event.inputs.STOCK_MODEL }} \
-          ${{ github.event.inputs.STOCK_CSC }} \
-          ${{ github.event.inputs.STOCK_IMEI }} \
-          ${{ github.event.inputs.STOCK_ROM_TYPE }}
-
-    - name: Downloading / extracting TARGET firmware
+    - name: Downloading / extracting ${{ github.event.inputs.TARGET_MODEL }} firmware
       run: |
         chmod +x ./scripts/download_firmware.sh
         sudo bash ./scripts/download_firmware.sh \
           ${{ github.event.inputs.TARGET_MODEL }} \
           ${{ github.event.inputs.TARGET_CSC }} \
           ${{ github.event.inputs.TARGET_IMEI }} \
-          ${{ github.event.inputs.TARGET_MODEL }} \
+          ${{ github.event.inputs.TARGET_MODEL }}
+
+    - name: Downloading / extracting ${SUPPORT_MODEL} firmware
+      run: |
+        chmod +x ./QuantumROM/Devices/${SUPPORT_MODEL}/${SUPPORT_MODEL}.sh
+        sudo bash ./QuantumROM/Devices/${SUPPORT_MODEL}/${SUPPORT_MODEL}.sh \
 
     - name: Start making ROM
       run: |
