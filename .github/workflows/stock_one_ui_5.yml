@@ -13,12 +13,12 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    - name: Install required packages
+    - name: Installing required packages
       run: |
         chmod +x ./scripts/install_packages.sh
         sudo bash ./scripts/install_packages.sh
 
-    - name: Download firmware
+    - name: Downloading firmware
       run: |
         chmod +x ./scripts/download_firmware.sh
         sudo bash ./scripts/download_firmware.sh SM-A225F BKD 350167020473859 Stock
