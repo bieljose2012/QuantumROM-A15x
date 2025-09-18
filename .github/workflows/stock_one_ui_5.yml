@@ -31,7 +31,7 @@ jobs:
     - name: Validate device support
       run: |
         if [ ! -d "./QuantumROM/Devices/${{ github.event.inputs.SUPPORT_MODEL }}" ]; then
-          echo "❌ Your device '${{ github.event.inputs.SUPPORT_MODEL }}' is not ready for port target ROM."
+          echo "⛔️ Your device '${{ github.event.inputs.SUPPORT_MODEL }}' is not ready for port target ROM."
           exit 1
         fi
 
