@@ -6,7 +6,7 @@ on:
       SUPPORT_MODEL:
         description: "==== MAKE ROM FOR ==== Device Model"
         required: true
-        default: "SM-A225F"
+        default: "SM-A225X"
       TARGET_MODEL:
         description: "=== TARGET ROM SECTION === Device Model"
         required: true
