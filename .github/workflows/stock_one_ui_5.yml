@@ -3,9 +3,9 @@ name: Stock One UI 5 Rom Mod
 on:
   workflow_dispatch:
     inputs:
-      # STOCK section
+      # STOCK rom section
       STOCK_MODEL:
-        description: "STOCK: Device Model"
+        description: "=== STOCK SECTION === Device Model"
         required: true
         default: "SM-A225F"
       STOCK_CSC:
@@ -21,7 +21,7 @@ on:
         required: true
         default: "Stock"
 
-      # TARGET section
+      # TARGET rom section
       TARGET_MODEL:
         description: "TARGET: Device Model"
         required: true
@@ -35,7 +35,7 @@ on:
         required: true
         default: "350167020473859"
       TARGET_ROM_TYPE:
-        description: "TARGET: ROM Type (e.g. Debloated, Custom)"
+        description: "[TARGET] Device Model"
         required: true
         default: "Debloated"
 
