@@ -5,7 +5,7 @@ on:
     inputs:
       # STOCK rom section
       STOCK_MODEL:
-        description: "=== STOCK SECTION === Device Model"
+        description: "=== STOCK ROM SECTION === Device Model"
         required: true
         default: "SM-A225F"
       STOCK_CSC:
@@ -17,15 +17,15 @@ on:
         required: true
         default: "350167020473859"
       STOCK_ROM_TYPE:
-        description: "STOCK: ROM Type (e.g. Stock, Debloated)"
+        description: "STOCK: ROM Type (Stock)"
         required: true
         default: "Stock"
 
       # TARGET rom section
       TARGET_MODEL:
-        description: "TARGET: Device Model"
+        description: "=== TARGET ROM SECTION === Device Model"
         required: true
-        default: "SM-A225F"
+        default: "SM-S711B"
       TARGET_CSC:
         description: "TARGET: CSC Code"
         required: true
@@ -37,7 +37,7 @@ on:
       TARGET_ROM_TYPE:
         description: "[TARGET] Device Model"
         required: true
-        default: "Debloated"
+        default: "Target"
 
 jobs:
   build:
