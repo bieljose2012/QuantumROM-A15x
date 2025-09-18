@@ -1,1 +1,1 @@
-![QuantumROM Logo](QuantumROM/logo.png)
+![QuantumROM Logo](QuantumROM/logo/QuantumROM.jpg)
