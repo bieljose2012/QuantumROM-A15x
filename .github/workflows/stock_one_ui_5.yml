@@ -3,6 +3,12 @@ name: QuantumROM Tools.
 on:
   workflow_dispatch:
     inputs:
+      # Support Device Model
+      SUPPORT_MODEL:
+        description: "=== MAKE ROM FOR === Device Model"
+        required: true
+        default: "SM-S711B"
+      
       # TARGET rom section
       TARGET_MODEL:
         description: "=== TARGET ROM SECTION === Device Model"
@@ -24,6 +30,13 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
+
+    - name: Validate device support.
+      run: |
+        if [ ! -d "./QuantumROM/Devices/${{ GITHUB.EVENT.INPUTS.STOCK_MODEL }}" ]; then
+          echo "❌ Your device '${{ github.event.inputs.SUPPORT_MODEL }}' is not ready for port target ROM."
+          exit 1
+        fi
 
     - name: Installing required packages
       run: |
