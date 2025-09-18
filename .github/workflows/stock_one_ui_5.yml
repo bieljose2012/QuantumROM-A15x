@@ -40,7 +40,7 @@ jobs:
         chmod +x ./scripts/install_packages.sh
         sudo bash ./scripts/install_packages.sh
 
-    - name: Downloading / extracting target firmware (${{ github.event.inputs.TARGET_MODEL }})
+    - name: Downloading / extracting (${{ github.event.inputs.TARGET_MODEL }}) firmware.
       run: |
         chmod +x ./scripts/download_firmware.sh
         sudo bash ./scripts/download_firmware.sh \
@@ -49,7 +49,7 @@ jobs:
           ${{ github.event.inputs.TARGET_IMEI }} \
           ${{ github.event.inputs.TARGET_MODEL }}
 
-    - name: Downloading / extracting support firmware (${{ github.event.inputs.SUPPORT_MODEL }})
+    - name: Downloading / extracting (${{ github.event.inputs.SUPPORT_MODEL }}) firmware.
       run: |
         chmod +x ./QuantumROM/Devices/${{ github.event.inputs.SUPPORT_MODEL }}/${{ github.event.inputs.SUPPORT_MODEL }}.sh
         sudo bash ./QuantumROM/Devices/${{ github.event.inputs.SUPPORT_MODEL }}/${{ github.event.inputs.SUPPORT_MODEL }}.sh
