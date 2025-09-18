@@ -39,9 +39,6 @@ fi
 rm -rf "${DOWNLOAD_DIR}${D_FOLDER}"
 mkdir -p "${DOWNLOAD_DIR}/${D_FOLDER}"
 
-# Firmware Build Version:
-fw_build_version=$(echo "$version" | awk -F'/' '{print $1}')
-
 # --- Step 3: Download Firmware ---
 python3 -m samloader -m "$MODEL" -r "$CSC" -i "$IMEI" download -v "$version" -O "${DOWNLOAD_DIR}/${D_FOLDER}"
 if [ $? -ne 0 ]; then
@@ -58,20 +55,20 @@ if [ -z "$enc_file" ]; then
 fi
 
 # --- Step 5: Decrypting firmware...
-python3 -m samloader -m "$MODEL" -r "$CSC" -i "$IMEI" decrypt -v "$version" -i "$enc_file" -o "${DOWNLOAD_DIR}/${D_FOLDER}/${MODEL}_${CSC}_${fw_build_version}.zip"
+python3 -m samloader -m "$MODEL" -r "$CSC" -i "$IMEI" decrypt -v "$version" -i "$enc_file" -o "${DOWNLOAD_DIR}/${D_FOLDER}/${MODEL}_${CSC}.zip"
 if [ $? -ne 0 ]; then
     echo "❌ Decryption failed."
     exit 1
 fi
 
 # --- Show Firmware Info ---
-file_size=$(du -m "${DOWNLOAD_DIR}/${D_FOLDER}/${MODEL}_${CSC}_${fw_build_version}.zip" | cut -f1)
+file_size=$(du -m "${DOWNLOAD_DIR}/${D_FOLDER}/${MODEL}_${CSC}.zip" | cut -f1)
 echo "✅ Firmware decrypted successfully!"
 echo "Firmware Size: ${file_size} MB"
-echo "Saved to: ${DOWNLOAD_DIR}/${D_FOLDER}/${MODEL}_${CSC}_${fw_build_version}.zip"
+echo "Saved to: ${DOWNLOAD_DIR}/${D_FOLDER}/${MODEL}_${CSC}.zip"
 
 # --- Cleanup ---
 rm -f "$enc_file"
 
 # --- Extract Firmware ---
-sudo bash $(pwd)/scripts/extract_firmware.sh "$D_FOLDER" "${MODEL}_${CSC}_${fw_build_version}.zip"
+sudo bash $(pwd)/scripts/extract_firmware.sh "$D_FOLDER" "${MODEL}_${CSC}.zip"
