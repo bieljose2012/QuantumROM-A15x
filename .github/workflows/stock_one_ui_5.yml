@@ -3,24 +3,6 @@ name: Stock One UI 5 Rom Mod
 on:
   workflow_dispatch:
     inputs:
-      # STOCK rom section
-      STOCK_MODEL:
-        description: "=== STOCK ROM SECTION === Device Model"
-        required: true
-        default: "SM-A225F"
-      STOCK_CSC:
-        description: "STOCK: CSC Code"
-        required: true
-        default: "BKD"
-      STOCK_IMEI:
-        description: "STOCK: IMEI Number"
-        required: true
-        default: "350167020473859"
-      STOCK_ROM_TYPE:
-        description: "STOCK: ROM type (Stock)"
-        required: true
-        default: "Stock"
-
       # TARGET rom section
       TARGET_MODEL:
         description: "=== TARGET ROM SECTION === Device Model"
@@ -34,10 +16,6 @@ on:
         description: "TARGET: IMEI Number"
         required: true
         default: "350167020473859"
-      TARGET_ROM_TYPE:
-        description: "[TARGET] Device ROM type"
-        required: true
-        default: "Target"
 
 jobs:
   build:
@@ -68,7 +46,7 @@ jobs:
           ${{ github.event.inputs.TARGET_MODEL }} \
           ${{ github.event.inputs.TARGET_CSC }} \
           ${{ github.event.inputs.TARGET_IMEI }} \
-          ${{ github.event.inputs.TARGET_ROM_TYPE }}
+          ${{ github.event.inputs.TARGET_MODEL }} \
 
     - name: Start making ROM
       run: |
