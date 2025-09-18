@@ -1,15 +1,12 @@
-name: QuantumROM Tools.
+name: QuantumROM Tools
 
 on:
   workflow_dispatch:
     inputs:
-      # Support Device Model
       SUPPORT_MODEL:
         description: "==== MAKE ROM FOR ==== Device Model"
         required: true
         default: "SM-A225F"
-      
-      # TARGET rom section
       TARGET_MODEL:
         description: "=== TARGET ROM SECTION === Device Model"
         required: true
@@ -31,9 +28,36 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    - name: Validate device support.
+    - name: Validate device support
       run: |
-        if [ ! -d "./QuantumROM/Devices/${{ ${{ github.event.inputs.SUPPORT_MODEL }} \ }}" ]; then
+        if [ ! -d "./QuantumROM/Devices/${{ github.event.inputs.SUPPORT_MODEL }}" ]; then
+          echo "❌ Your device '${{ github.event.inputs.SUPPORT_MODEL }}' is not ready for port target ROM."
+          exit 1
+        fi
+
+    - name: Installing required packages
+      run: |
+        chmod +x ./scripts/install_packages.sh
+        sudo bash ./scripts/install_packages.sh
+
+    - name: Downloading / extracting target firmware (${{ github.event.inputs.TARGET_MODEL }})
+      run: |
+        chmod +x ./scripts/download_firmware.sh
+        sudo bash ./scripts/download_firmware.sh \
+          ${{ github.event.inputs.TARGET_MODEL }} \
+          ${{ github.event.inputs.TARGET_CSC }} \
+          ${{ github.event.inputs.TARGET_IMEI }} \
+          ${{ github.event.inputs.TARGET_MODEL }}
+
+    - name: Downloading / extracting support firmware (${{ github.event.inputs.SUPPORT_MODEL }})
+      run: |
+        chmod +x ./QuantumROM/Devices/${{ github.event.inputs.SUPPORT_MODEL }}/${{ github.event.inputs.SUPPORT_MODEL }}.sh
+        sudo bash ./QuantumROM/Devices/${{ github.event.inputs.SUPPORT_MODEL }}/${{ github.event.inputs.SUPPORT_MODEL }}.sh
+
+    - name: Start making ROM
+      run: |
+        chmod +x ./scripts/make_rom.sh
+        sudo bash ./scripts/make_rom.sh
           echo "❌ Your device '${{ github.event.inputs.SUPPORT_MODEL }}' is not ready for port target ROM."
           exit 1
         fi
