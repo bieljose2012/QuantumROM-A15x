@@ -3,22 +3,41 @@ name: Stock One UI 5 Rom Mod
 on:
   workflow_dispatch:
     inputs:
-      MODEL:
-        description: "Device Model"
+      # STOCK section
+      STOCK_MODEL:
+        description: "STOCK: Device Model"
         required: true
         default: "SM-A225F"
-      CSC:
-        description: "CSC Code"
+      STOCK_CSC:
+        description: "STOCK: CSC Code"
         required: true
         default: "BKD"
-      IMEI:
-        description: "IMEI Number"
+      STOCK_IMEI:
+        description: "STOCK: IMEI Number"
         required: true
         default: "350167020473859"
-      ROM_TYPE:
-        description: "ROM Type (e.g. Stock, Target)"
+      STOCK_ROM_TYPE:
+        description: "STOCK: ROM Type (e.g. Stock, Debloated)"
         required: true
         default: "Stock"
+
+      # TARGET section
+      TARGET_MODEL:
+        description: "TARGET: Device Model"
+        required: true
+        default: "SM-A225F"
+      TARGET_CSC:
+        description: "TARGET: CSC Code"
+        required: true
+        default: "BKD"
+      TARGET_IMEI:
+        description: "TARGET: IMEI Number"
+        required: true
+        default: "350167020473859"
+      TARGET_ROM_TYPE:
+        description: "TARGET: ROM Type (e.g. Debloated, Custom)"
+        required: true
+        default: "Debloated"
 
 jobs:
   build:
@@ -33,8 +52,28 @@ jobs:
         chmod +x ./scripts/install_packages.sh
         sudo bash ./scripts/install_packages.sh
 
-    - name: Downloading / extracting firmware
+    - name: Downloading / extracting STOCK firmware
       run: |
+        chmod +x ./scripts/download_firmware.sh
+        sudo bash ./scripts/download_firmware.sh \
+          ${{ github.event.inputs.STOCK_MODEL }} \
+          ${{ github.event.inputs.STOCK_CSC }} \
+          ${{ github.event.inputs.STOCK_IMEI }} \
+          ${{ github.event.inputs.STOCK_ROM_TYPE }}
+
+    - name: Downloading / extracting TARGET firmware
+      run: |
+        chmod +x ./scripts/download_firmware.sh
+        sudo bash ./scripts/download_firmware.sh \
+          ${{ github.event.inputs.TARGET_MODEL }} \
+          ${{ github.event.inputs.TARGET_CSC }} \
+          ${{ github.event.inputs.TARGET_IMEI }} \
+          ${{ github.event.inputs.TARGET_ROM_TYPE }}
+
+    - name: Start making ROM
+      run: |
+        chmod +x ./scripts/make_rom.sh
+        sudo bash ./scripts/make_rom.sh      run: |
         chmod +x ./scripts/download_firmware.sh
         sudo bash ./scripts/download_firmware.sh \
           ${{ github.event.inputs.MODEL }} \
