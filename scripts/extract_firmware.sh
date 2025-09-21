@@ -65,6 +65,6 @@ rm -rf "${FW_FILE_DIR}/super.img"
 rm -rf "${FW_FILE_DIR}/vendor_dlkm.img"
 
 echo "Extracting all .img..."
-bash ./extract_ext4.sh
+sudo bash "$(pwd)/scripts/extract_ext4.sh" "$FW_FILE_DIR"
 
 echo "✅ Firmware extraction complete."
