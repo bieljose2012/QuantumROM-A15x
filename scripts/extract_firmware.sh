@@ -64,4 +64,7 @@ echo "Final cleanup: removing super.img..."
 rm -rf "${FW_FILE_DIR}/super.img"
 rm -rf "${FW_FILE_DIR}/vendor_dlkm.img"
 
+echo "Extracting all .img..."
+bash ./extract_ext4.sh
+
 echo "✅ Firmware extraction complete."
