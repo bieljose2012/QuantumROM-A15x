@@ -9,7 +9,7 @@ fi
 
 FW_FILE_LOCATION=$1
 FW_FILE_NAME=$2
-FW_FILE_DIR="Firmware_Download/${FW_FILE_LOCATION}"
+FW_FILE_DIR="${FW_DIR}/${FW_FILE_LOCATION}"
 
 echo "Extracting firmware from ${FW_FILE_NAME}..."
 7z x "${FW_FILE_DIR}/${FW_FILE_NAME}" -o"${FW_FILE_DIR}"
