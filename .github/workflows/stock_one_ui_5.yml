@@ -52,8 +52,8 @@ jobs:
         
     - name: D_loading_extracting SM-S711B firmware.
       run: |
-        chmod +x ./QuantumROM/Devices/download_target_firmware.sh
-        sudo bash ./QuantumROM/Devices/download_target_firmware.sh SM-S711B
+        # chmod +x ./QuantumROM/Devices/download_target_firmware.sh
+        # sudo bash ./QuantumROM/Devices/download_target_firmware.sh SM-S711B
     
     - name: Start making ROM
       run: |
