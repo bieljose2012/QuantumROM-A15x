@@ -2,8 +2,8 @@
 # extract_firmware.sh
 # Usage: bash extract_firmware.sh file_location file_name
 
-if [ "$#" -ne 1 ]; then
-    echo "Usage: bash $0 file_location"
+if [ "$#" -ne 2 ]; then
+    echo "Usage: bash $0 file_location file_name"
     exit 1
 fi
 
