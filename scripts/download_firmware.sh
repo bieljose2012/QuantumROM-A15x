@@ -12,10 +12,10 @@ CSC=$2
 IMEI=$3
 D_FOLDER=$4
 
-FW_DIR="$BASE_DIR/fw_download"
-BIN_DIR="$BASE_DIR/bin"
-WORK_DIR="$BASE_DIR/work"
-OUT_DIR="$BASE_DIR/out"
+FW_DIR="./fw_download"
+BIN_DIR="./bin"
+WORK_DIR="./work"
+OUT_DIR="./out"
 
 rm -rf "${FW_DIR}${D_FOLDER}"
 mkdir -p "${FW_DIR}/${D_FOLDER}"
