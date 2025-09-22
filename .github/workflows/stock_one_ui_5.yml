@@ -37,13 +37,8 @@ jobs:
       run: |
         chmod +x ./QuantumROM/Devices/${{ github.event.inputs.SUPPORT_MODEL }}/${{ github.event.inputs.SUPPORT_MODEL }}.sh
         sudo bash ./QuantumROM/Devices/${{ github.event.inputs.SUPPORT_MODEL }}/${{ github.event.inputs.SUPPORT_MODEL }}.sh
-        
-    - name: D_loading_extracting SM-S711B firmware.
-      run: |
-        # chmod +x ./QuantumROM/Devices/download_target_firmware.sh
-        # sudo bash ./QuantumROM/Devices/download_target_firmware.sh SM-S711B
     
     - name: Start making ROM
       run: |
-        chmod +x ./scripts/make_rom.sh
-        # sudo bash ./scripts/make_rom.sh
+        chmod +x ./make_rom.sh
+        sudo bash ./make_rom.sh
