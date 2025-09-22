@@ -45,6 +45,11 @@ jobs:
         chmod +x ./scripts/install_packages.sh
         sudo bash ./scripts/install_packages.sh
 
+    - name: D-loading_extracting (${{ github.event.inputs.SUPPORT_MODEL }}) firmware.
+      run: |
+        chmod +x ./QuantumROM/Devices/${{ github.event.inputs.SUPPORT_MODEL }}/${{ github.event.inputs.SUPPORT_MODEL }}.sh
+        sudo bash ./QuantumROM/Devices/${{ github.event.inputs.SUPPORT_MODEL }}/${{ github.event.inputs.SUPPORT_MODEL }}.sh
+        
     - name: D_loading_extracting (${{ github.event.inputs.TARGET_MODEL }}) firmware.
       run: |
         chmod +x ./scripts/download_firmware.sh
@@ -54,10 +59,6 @@ jobs:
           ${{ github.event.inputs.TARGET_IMEI }} \
           ${{ github.event.inputs.TARGET_MODEL }}
 
-    - name: D-loading_extracting (${{ github.event.inputs.SUPPORT_MODEL }}) firmware.
-      run: |
-        chmod +x ./QuantumROM/Devices/${{ github.event.inputs.SUPPORT_MODEL }}/${{ github.event.inputs.SUPPORT_MODEL }}.sh
-        sudo bash ./QuantumROM/Devices/${{ github.event.inputs.SUPPORT_MODEL }}/${{ github.event.inputs.SUPPORT_MODEL }}.sh
 
     - name: Start making ROM
       run: |
