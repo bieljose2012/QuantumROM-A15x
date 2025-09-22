@@ -11,6 +11,12 @@ img_directory="$1"
 
 for imgfile in ./$img_directory/*.img; do
     [ -e "$imgfile" ] || continue
+
+    if [[ "$(basename "$imgfile")" == "boot.img" ]]; then
+        continue
+    fi
+
     python3 ./bin/py_scripts/imgextractor.py "$imgfile" "$img_directory"
-    # rm -rf ./$img_directory/*.img
 done
+
+find "./$img_directory" -type f -name "*.img" ! -name "boot.img" -exec rm -f {} +
