@@ -7,18 +7,6 @@ on:
         description: "==== MAKE ROM FOR ==== Device Model"
         required: true
         default: "SM-A225F"
-      TARGET_MODEL:
-        description: "=== TARGET ROM SECTION === Device Model"
-        required: true
-        default: "SM-S711B"
-      TARGET_CSC:
-        description: "TARGET: CSC Code"
-        required: true
-        default: "INS"
-      TARGET_IMEI:
-        description: "TARGET: IMEI Number"
-        required: true
-        default: "355195302007124"
 
 jobs:
   build:
