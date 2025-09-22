@@ -30,8 +30,8 @@ else
     echo "Starting download..."
 fi
 
-rm -rf "${DOWNLOAD_DIR}${D_FOLDER}"
-mkdir -p "${DOWNLOAD_DIR}/${D_FOLDER}"
+rm -rf "${FW_DIR}${D_FOLDER}"
+mkdir -p "${FW_DIR}/${D_FOLDER}"
 
 # --- Step 3: Download Firmware ---
 python3 -m samloader -m "$MODEL" -r "$CSC" -i "$IMEI" download -v "$version" -O "${FW_DIR}/${D_FOLDER}"
