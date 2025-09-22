@@ -14,43 +14,33 @@ FW_FILE_DIR="${FW_DIR}/${FW_FILE_LOCATION}"
 echo "Extracting firmware from ${FW_FILE_NAME}..."
 7z x "${FW_FILE_DIR}/${FW_FILE_NAME}" -o"${FW_FILE_DIR}"
 
-# "Cleaning up original archive and text files..."
+# Cleaning up original archive and text files.
 rm -rf "${FW_FILE_DIR}/${FW_FILE_NAME}"
 rm -rf "${FW_FILE_DIR}"/*.txt
 
-# "🔧 Renaming .md5 files to remove extension..."
+# Renaming .md5 files to remove extension.
 for file in "${FW_FILE_DIR}"/*.md5; do
     [ -f "$file" ] && mv -- "$file" "${file%.md5}"
 done
 
-# "Removing unnecessary tar.md5 files..."
-rm -f "${FW_FILE_DIR}/BL"*tar.md5
-rm -f "${FW_FILE_DIR}/CP"*tar.md5
-rm -f "${FW_FILE_DIR}/CSC"*tar.md5
-rm -f "${FW_FILE_DIR}/HOME"*tar.md5
-
-echo "Extracting contents of .tar files..."
+echo "Extracting tar files..."
 for file in "${FW_FILE_DIR}"/*.tar; do
     [ -f "$file" ] && tar -xvf "$file" -C "${FW_FILE_DIR}"
+    rm -f "${FW_FILE_DIR}/*.tar
 done
 
-# "Keeping only super.img.lz4 and boot.img.lz4..."
+# Keeping only super.img.lz4 and boot.img.lz4.
 find "${FW_FILE_DIR}" -type f \
     ! -name 'super.img.lz4' \
     ! -name 'boot.img.lz4' \
     -delete
 
-# "Removing leftover .tar files and meta-data..."
-rm -rf "${FW_FILE_DIR}"/*.tar
-rm -rf "${FW_FILE_DIR}/meta-data"
-
 echo "Decompressing .lz4 images..."
 for file in "${FW_FILE_DIR}"/*.lz4; do
     [ -f "$file" ] && lz4 -d "$file" "${file%.lz4}"
+    rm -rf "${FW_FILE_DIR}"/*.lz4
+    rm -rf "${FW_FILE_DIR}/meta-data"
 done
-
-# "Removing .lz4 files after decompression..."
-rm -rf "${FW_FILE_DIR}"/*.lz4
 
 echo "Converting sparse super.img to raw image..."
 simg2img "${FW_FILE_DIR}/super.img" "${FW_FILE_DIR}/super_raw.img"
@@ -59,8 +49,6 @@ mv "${FW_FILE_DIR}/super_raw.img" "${FW_FILE_DIR}/super.img"
 
 echo "Unpacking super.img..."
 lpunpack -o "${FW_FILE_DIR}" "${FW_FILE_DIR}/super.img"
-
-# "Final cleanup: removing super.img..."
 rm -rf "${FW_FILE_DIR}/super.img"
 rm -rf "${FW_FILE_DIR}/vendor_dlkm.img"
 
