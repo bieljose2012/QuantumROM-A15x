@@ -12,6 +12,11 @@ CSC=$2
 IMEI=$3
 D_FOLDER=$4
 
+FW_DIR="$BASE_DIR/fw_download"
+BIN_DIR="$BASE_DIR/bin"
+WORK_DIR="$BASE_DIR/work"
+OUT_DIR="$BASE_DIR/out"
+
 echo "======================================"
 echo " Samsung FW Downloader "
 echo "======================================"
