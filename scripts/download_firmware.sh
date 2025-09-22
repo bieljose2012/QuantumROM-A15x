@@ -70,4 +70,4 @@ echo "Saved to: ${FW_DIR}/${D_FOLDER}/${MODEL}_${CSC}.zip"
 rm -f "$enc_file"
 
 # --- Extract Firmware ---
-sudo bash $(pwd)/scripts/extract_firmware.sh "$D_FOLDER" "${MODEL}_${CSC}.zip"
+sudo bash ./scripts/extract_firmware.sh "$D_FOLDER" "${MODEL}_${CSC}.zip"
