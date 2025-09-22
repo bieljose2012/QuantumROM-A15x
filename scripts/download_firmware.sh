@@ -17,6 +17,9 @@ BIN_DIR="$BASE_DIR/bin"
 WORK_DIR="$BASE_DIR/work"
 OUT_DIR="$BASE_DIR/out"
 
+rm -rf "${FW_DIR}${D_FOLDER}"
+mkdir -p "${FW_DIR}/${D_FOLDER}"
+
 echo "======================================"
 echo " Samsung FW Downloader "
 echo "======================================"
@@ -34,9 +37,6 @@ else
     echo "✅ Update found: $version"
     echo "Starting download..."
 fi
-
-rm -rf "${FW_DIR}${D_FOLDER}"
-mkdir -p "${FW_DIR}/${D_FOLDER}"
 
 # --- Step 3: Download Firmware ---
 python3 -m samloader -m "$MODEL" -r "$CSC" -i "$IMEI" download -v "$version" -O "${FW_DIR}/${D_FOLDER}"
