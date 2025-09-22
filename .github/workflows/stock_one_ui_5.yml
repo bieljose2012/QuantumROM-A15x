@@ -35,15 +35,15 @@ jobs:
           exit 1
         fi
 
-    - name: Installing required packages.
-      run: |
-        chmod +x ./scripts/install_packages.sh
-        sudo bash ./scripts/install_packages.sh
-
     - name: Setup directories.
       run: |
         chmod +x ./scripts/setup_directories.sh
         sudo bash ./scripts/setup_directories.sh
+        
+    - name: Installing required packages.
+      run: |
+        chmod +x ./scripts/install_packages.sh
+        sudo bash ./scripts/install_packages.sh
 
     - name: D_loading_extracting (${{ github.event.inputs.TARGET_MODEL }}) firmware.
       run: |
