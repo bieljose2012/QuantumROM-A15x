@@ -30,24 +30,18 @@ else
     echo "Starting download..."
 fi
 
-# --- Step 2: Prepare Download Directory ---
-DOWNLOAD_DIR="Firmware_Download"
-if [ ! -d "$DOWNLOAD_DIR" ]; then
-    mkdir -p "$DOWNLOAD_DIR"
-fi
-
 rm -rf "${DOWNLOAD_DIR}${D_FOLDER}"
 mkdir -p "${DOWNLOAD_DIR}/${D_FOLDER}"
 
 # --- Step 3: Download Firmware ---
-python3 -m samloader -m "$MODEL" -r "$CSC" -i "$IMEI" download -v "$version" -O "${DOWNLOAD_DIR}/${D_FOLDER}"
+python3 -m samloader -m "$MODEL" -r "$CSC" -i "$IMEI" download -v "$version" -O "${FW_DIR}/${D_FOLDER}"
 if [ $? -ne 0 ]; then
     echo "❌ Download failed. Check IMEI/MODEL/CSC."
     exit 1
 fi
 
 # --- Step 4: Decrypt Firmware ---
-enc_file=$(find "${DOWNLOAD_DIR}/${D_FOLDER}" -name "*.enc*" | head -n 1)
+enc_file=$(find "${FW_DIR}/${D_FOLDER}" -name "*.enc*" | head -n 1)
 
 if [ -z "$enc_file" ]; then
     echo "❌ No encrypted firmware file found!"
@@ -55,17 +49,17 @@ if [ -z "$enc_file" ]; then
 fi
 
 # --- Step 5: Decrypting firmware...
-python3 -m samloader -m "$MODEL" -r "$CSC" -i "$IMEI" decrypt -v "$version" -i "$enc_file" -o "${DOWNLOAD_DIR}/${D_FOLDER}/${MODEL}_${CSC}.zip"
+python3 -m samloader -m "$MODEL" -r "$CSC" -i "$IMEI" decrypt -v "$version" -i "$enc_file" -o "${FW_DIR}/${D_FOLDER}/${MODEL}_${CSC}.zip"
 if [ $? -ne 0 ]; then
     echo "❌ Decryption failed."
     exit 1
 fi
 
 # --- Show Firmware Info ---
-file_size=$(du -m "${DOWNLOAD_DIR}/${D_FOLDER}/${MODEL}_${CSC}.zip" | cut -f1)
+file_size=$(du -m "${FW_DIR}/${D_FOLDER}/${MODEL}_${CSC}.zip" | cut -f1)
 echo "✅ Firmware decrypted successfully!"
 echo "Firmware Size: ${file_size} MB"
-echo "Saved to: ${DOWNLOAD_DIR}/${D_FOLDER}/${MODEL}_${CSC}.zip"
+echo "Saved to: ${FW_DIR}/${D_FOLDER}/${MODEL}_${CSC}.zip"
 
 # --- Cleanup ---
 rm -f "$enc_file"
