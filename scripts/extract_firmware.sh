@@ -2,13 +2,18 @@
 # extract_firmware.sh
 # Usage: bash extract_firmware.sh file_location file_name
 
-set -e  # Exit on error
-set -u  # Treat unset variables as error
+set -e
+set -u
 
 if [ "$#" -ne 2 ]; then
     echo "Usage: bash $0 file_location file_name"
     exit 1
 fi
+
+FW_DIR="./fw_download"
+BIN_DIR="./bin"
+WORK_DIR="./work"
+OUT_DIR="./out"
 
 FW_FILE_LOCATION=$1
 FW_FILE_NAME=$2
