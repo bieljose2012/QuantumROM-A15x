@@ -33,7 +33,7 @@ jobs:
         chmod +x ./scripts/install_packages.sh
         sudo bash ./scripts/install_packages.sh
 
-    - name: D-loading_extracting (${{ github.event.inputs.SUPPORT_MODEL }}) firmware.
+    - name: D-loading_extracting ${{ github.event.inputs.SUPPORT_MODEL }} firmware.
       run: |
         chmod +x ./QuantumROM/Devices/${{ github.event.inputs.SUPPORT_MODEL }}/${{ github.event.inputs.SUPPORT_MODEL }}.sh
         sudo bash ./QuantumROM/Devices/${{ github.event.inputs.SUPPORT_MODEL }}/${{ github.event.inputs.SUPPORT_MODEL }}.sh
