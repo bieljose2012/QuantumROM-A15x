@@ -2,6 +2,9 @@
 # extract_firmware.sh
 # Usage: bash extract_firmware.sh file_location file_name
 
+set -e  # Exit on error
+set -u  # Treat unset variables as error
+
 if [ "$#" -ne 2 ]; then
     echo "Usage: bash $0 file_location file_name"
     exit 1
@@ -15,8 +18,8 @@ echo "Extracting firmware from ${FW_FILE_NAME}..."
 7z x "${FW_FILE_DIR}/${FW_FILE_NAME}" -o"${FW_FILE_DIR}"
 
 # Cleaning up original archive and text files.
-rm -rf "${FW_FILE_DIR}/${FW_FILE_NAME}"
-rm -rf "${FW_FILE_DIR}"/*.txt
+rm -f "${FW_FILE_DIR}/${FW_FILE_NAME}"
+rm -f "${FW_FILE_DIR}"/*.txt
 
 # Renaming .md5 files to remove extension.
 for file in "${FW_FILE_DIR}"/*.md5; do
@@ -26,7 +29,7 @@ done
 echo "Extracting tar files..."
 for file in "${FW_FILE_DIR}"/*.tar; do
     [ -f "$file" ] && tar -xvf "$file" -C "${FW_FILE_DIR}"
-    rm -f "${FW_FILE_DIR}/*.tar
+    [ -f "$file" ] && rm -f "$file"
 done
 
 # Keeping only super.img.lz4 and boot.img.lz4.
@@ -38,19 +41,21 @@ find "${FW_FILE_DIR}" -type f \
 echo "Decompressing .lz4 images..."
 for file in "${FW_FILE_DIR}"/*.lz4; do
     [ -f "$file" ] && lz4 -d "$file" "${file%.lz4}"
-    rm -rf "${FW_FILE_DIR}"/*.lz4
-    rm -rf "${FW_FILE_DIR}/meta-data"
 done
+
+# Clean up .lz4 files and metadata after decompression
+rm -f "${FW_FILE_DIR}"/*.lz4
+rm -rf "${FW_FILE_DIR}/meta-data"
 
 echo "Converting sparse super.img to raw image..."
 simg2img "${FW_FILE_DIR}/super.img" "${FW_FILE_DIR}/super_raw.img"
-rm -rf "${FW_FILE_DIR}/super.img"
+rm -f "${FW_FILE_DIR}/super.img"
 mv "${FW_FILE_DIR}/super_raw.img" "${FW_FILE_DIR}/super.img"
 
 echo "Unpacking super.img..."
 lpunpack -o "${FW_FILE_DIR}" "${FW_FILE_DIR}/super.img"
-rm -rf "${FW_FILE_DIR}/super.img"
-rm -rf "${FW_FILE_DIR}/vendor_dlkm.img"
+rm -f "${FW_FILE_DIR}/super.img"
+rm -f "${FW_FILE_DIR}/vendor_dlkm.img"
 
 echo "Extracting all .img..."
 sudo bash "$(pwd)/scripts/extract_ext4.sh" "$FW_FILE_DIR"
