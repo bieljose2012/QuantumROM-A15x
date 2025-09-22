@@ -4,20 +4,26 @@ set -e
 # Get script's directory.
 BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
-# Settings up directories.
-export fw_dir="$BASE_DIR/fw_download"
-export bin_dir="$BASE_DIR/bin"
-export work_dir="$BASE_DIR/work"
-export out_dir="$BASE_DIR/out"
-
-# Show directories
-echo "Firmware Download Dir: $fw_dir"
-echo "Bin Dir:              $bin_dir"
-echo "Work Dir:             $work_dir"
-echo "Out Dir:              $out_dir"
+# Directories.
+FW_DIR="$BASE_DIR/fw_download"
+BIN_DIR="$BASE_DIR/bin"
+WORK_DIR="$BASE_DIR/work"
+OUT_DIR="$BASE_DIR/out"
 
 # Clean old dirs
-rm -rf "$firmware_download_dir" "$work_dir" "$out_dir"
+rm -rf "$FW_DIR" "$WORK_DIR" "$OUT_DIR"
 
 # Recreate directories
-mkdir -p "$firmware_download_dir" "$work_dir" "$out_dir"
+mkdir -p "$FW_DIR" "$WORK_DIR" "$OUT_DIR"
+
+# Exporting directories.
+export $FW_DIR
+export $BIN_DIR
+export $WORK_DIR
+export $OUT_DIR
+
+# Show directories
+echo "Firmware Download Directory: $FW_DIR"
+echo "Binary Directory: $BIN_DIR"
+echo "Work Directory: $WORK_DIR"
+echo "Out Directory: $OUT_DIR"
