@@ -1,13 +1,11 @@
 #!/bin/bash
 set -e
 
-BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-
 # Directories
-FW_DIR="$BASE_DIR/fw_download"
-BIN_DIR="$BASE_DIR/bin"
-WORK_DIR="$BASE_DIR/work"
-OUT_DIR="$BASE_DIR/out"
+FW_DIR="../fw_download"
+BIN_DIR="../bin"
+WORK_DIR="../work"
+OUT_DIR="../out"
 
 # Clean old dirs
 rm -rf "$FW_DIR" "$WORK_DIR" "$OUT_DIR"
