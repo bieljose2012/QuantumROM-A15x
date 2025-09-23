@@ -8,6 +8,9 @@ if [ -z "$1" ]; then
 fi
 
 rom_directory="$1"
+FW_DIR="../fw_download"
+BIN_DIR="../bin"
+WORK_DIR="../work"
 out_dir="./out"
 
 rm -rf "$out_dir"
