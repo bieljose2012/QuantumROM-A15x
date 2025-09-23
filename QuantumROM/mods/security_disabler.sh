@@ -8,5 +8,5 @@ fi
 
 MODEL=$1
 
-echo "Deleting stock recovery."
-rm -f "../fw_download/$MODEL/vendor/recovery-from-boot.p"
+echo "Deleting $MODEL stock recovery."
+rm -f "../../fw_download/$MODEL/vendor/recovery-from-boot.p"
