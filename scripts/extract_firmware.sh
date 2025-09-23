@@ -10,10 +10,10 @@ if [ "$#" -ne 2 ]; then
     exit 1
 fi
 
-FW_DIR="./fw_download"
-BIN_DIR="./bin"
-WORK_DIR="./work"
-OUT_DIR="./out"
+FW_DIR="../fw_download"
+BIN_DIR="../bin"
+WORK_DIR="../work"
+OUT_DIR="../out"
 
 FW_FILE_LOCATION=$1
 FW_FILE_NAME=$2
