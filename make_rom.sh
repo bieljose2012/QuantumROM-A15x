@@ -11,8 +11,8 @@ CSC=$2
 IMEI=$3
 
 # Start firmware download.
-chmod +x ./QuantumROM/scripts/download_firmware.sh
-bash ./QuantumROM/scripts/download_firmware.sh $MODEL $CSC $IMEI $MODEL
+chmod +x ./scripts/download_firmware.sh
+bash ./scripts/download_firmware.sh $MODEL $CSC $IMEI $MODEL
 
 # Run Debloat cmd.
 chmod +x ./QuantumROM/mods/debloater.sh
