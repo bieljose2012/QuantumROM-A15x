@@ -2,10 +2,10 @@
 set -e
 
 # Directories
-FW_DIR="../fw_download"
-BIN_DIR="../bin"
-WORK_DIR="../work"
-OUT_DIR="../out"
+FW_DIR="fw_download"
+BIN_DIR="bin"
+WORK_DIR="work"
+OUT_DIR="out"
 
 # Clean old dirs
 rm -rf "$FW_DIR" "$WORK_DIR" "$OUT_DIR"

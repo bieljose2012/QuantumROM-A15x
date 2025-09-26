@@ -1,23 +1,14 @@
 #!/bin/bash
 # extract_firmware.sh
-# Usage: bash extract_firmware.sh file_location file_name
-
-set -e
-set -u
+# Usage: bash extract_firmware.sh FW_FILE_DIR FW_FILE_NAME
 
 if [ "$#" -ne 2 ]; then
-    echo "Usage: bash $0 file_location file_name"
+    echo "Usage: bash $0 <FW_FILE_DIR> <FW_FILE_NAME>"
     exit 1
 fi
 
-FW_DIR="../fw_download"
-BIN_DIR="../bin"
-WORK_DIR="../work"
-OUT_DIR="../out"
-
-FW_FILE_LOCATION=$1
+FW_FILE_DIR="$1"
 FW_FILE_NAME=$2
-FW_FILE_DIR="${FW_DIR}/${FW_FILE_LOCATION}"
 
 echo "Extracting firmware from ${FW_FILE_NAME}..."
 7z x "${FW_FILE_DIR}/${FW_FILE_NAME}" -o"${FW_FILE_DIR}"
@@ -33,8 +24,10 @@ done
 
 echo "Extracting tar files..."
 for file in "${FW_FILE_DIR}"/*.tar; do
-    [ -f "$file" ] && tar -xvf "$file" -C "${FW_FILE_DIR}"
-    [ -f "$file" ] && rm -f "$file"
+    if [ -f "$file" ]; then
+        tar -xvf "$file" -C "${FW_FILE_DIR}"
+        rm -f "$file"
+    fi
 done
 
 # Keeping only super.img.lz4 and boot.img.lz4.
@@ -61,8 +54,5 @@ echo "Unpacking super.img..."
 lpunpack -o "${FW_FILE_DIR}" "${FW_FILE_DIR}/super.img"
 rm -f "${FW_FILE_DIR}/super.img"
 rm -f "${FW_FILE_DIR}/vendor_dlkm.img"
-
-echo "Extracting all .img..."
-sudo bash "$(pwd)/scripts/extract_ext4.sh" "$FW_FILE_DIR"
 
 echo "✅ Firmware extraction complete."

@@ -12,10 +12,7 @@ CSC=$2
 IMEI=$3
 D_FOLDER=$4
 
-FW_DIR="../fw_download"
-BIN_DIR="../bin"
-WORK_DIR="../work"
-OUT_DIR="../out"
+FW_DIR="fw_download"
 
 rm -rf "${FW_DIR}${D_FOLDER}"
 mkdir -p "${FW_DIR}/${D_FOLDER}"
@@ -68,6 +65,3 @@ echo "Saved to: ${FW_DIR}/${D_FOLDER}/${MODEL}_${CSC}.zip"
 
 # --- Cleanup ---
 rm -f "$enc_file"
-
-# --- Extract Firmware ---
-sudo bash ./scripts/extract_firmware.sh "$D_FOLDER" "${MODEL}_${CSC}.zip"

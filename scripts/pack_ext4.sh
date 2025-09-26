@@ -1,22 +1,18 @@
 #!/bin/bash
 
-set -e
-
-if [ -z "$1" ]; then
-    echo "Usage: $0 <rom_directory>"
+if [ -z "$3" ]; then
+    echo "Usage: $0 <ROM_DIR> <BIN_DIR> <OUT_DIR>"
     exit 1
 fi
 
-rom_directory="$1"
-FW_DIR="../fw_download"
-BIN_DIR="../bin"
-WORK_DIR="../work"
-out_dir="./out"
+ROM_DIR="$1"
+BIN_DIR="$2"
+OUT_DIR="$3"
 
-rm -rf "$out_dir"
-mkdir -p "$out_dir"
+rm -rf "$OUT_DIR"
+mkdir -p "$OUT_DIR"
 
-for folder_path in "$rom_directory"/*; do
+for folder_path in "$ROM_DIR"/*; do
     [ -d "$folder_path" ] || continue
 
     folder_name=$(basename "$folder_path")
@@ -27,9 +23,9 @@ for folder_path in "$rom_directory"/*; do
     fi
 
     partition_name="$folder_name"
-    file_contexts_file="$rom_directory/config/$folder_name/${folder_name}_file_contexts"
-    fs_config_file="$rom_directory/config/$folder_name/${folder_name}_fs_config"
-    SIZE=$(du -sb "$rom_directory/$folder_name" | awk '{printf "%d", $1 * 1.07}')
+    file_contexts_file="$ROM_DIR/config/$folder_name/${folder_name}_file_contexts"
+    fs_config_file="$ROM_DIR/config/$folder_name/${folder_name}_fs_config"
+    SIZE=$(du -sb "$ROM_DIR/$folder_name" | awk '{printf "%d", $1 * 1.07}')
 
     if [ "$folder_name" = "system" ]; then
         mount_point="/"
@@ -47,5 +43,5 @@ for folder_path in "$rom_directory"/*; do
         -l "$SIZE" \
         -L "$mount_point" \
         -a "$partition_name" \
-        "$out_dir/$partition_name.img" "$rom_directory/$partition_name"
+        "$OUT_DIR/$partition_name.img" "$ROM_DIR/$partition_name"
 done
