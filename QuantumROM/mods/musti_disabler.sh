@@ -6,16 +6,16 @@ set -e
 #
 
 if [ "$#" -ne 1 ]; then
-    echo "Usage: bash $0 Device_Model"
+    echo "Usage: bash $0 <ROM_DIR>"
     exit 1
 fi
 
-MODEL=$1
+ROM_DIR=$1
 
 disable_fbe() {
   local md5
   local i
-  fstab_files=`grep -lr 'fileencryption' ../../fw_download/$MODEL/vendor/etc`
+  fstab_files=`grep -lr 'fileencryption' $ROM_DIR/vendor/etc`
 
   #
   # Exynos devices = fstab.exynos*.
@@ -35,7 +35,7 @@ disable_fbe() {
 disable_fde() {
   local md5
   local i
-  fstab_files=`grep -lr 'forceencrypt' ../../fw_download/$MODEL/vendor/etc`
+  fstab_files=`grep -lr 'forceencrypt' $ROM_DIR/vendor/etc`
 
   #
   # Exynos devices = fstab.exynos*.

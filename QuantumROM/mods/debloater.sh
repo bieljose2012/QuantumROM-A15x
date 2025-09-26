@@ -2,18 +2,18 @@
 set -e
 
 if [ "$#" -ne 1 ]; then
-    echo "Usage: bash $0 Device_Model"
+    echo "Usage: bash $0 ROM_DIR"
     exit 1
 fi
 
-MODEL=$1
+ROM_DIR=$1
 
-# Debloat $MODEL Product.
-rm -rf "../../fw_download/$MODEL/product/app/DuoStub"
-rm -rf "../../fw_download/$MODEL/product/app/GoogleCalendarSyncAdapter"
-rm -rf "../../fw_download/$MODEL/product/app/SpeechServicesByGoogle"
-rm -rf "../../fw_download/$MODEL/product/priv-app/AndroidAutoStub"
-rm -rf "../../fw_download/$MODEL/product/priv-app/AndroidSystemIntelligence"
-rm -rf "../../fw_download/$MODEL/product/priv-app/GoogleRestore"
-rm -rf "../../fw_download/$MODEL/product/priv-app/Messages"
-rm -rf "../../fw_download/$MODEL/product/priv-app/SearchSelector"
+# Debloat $ROM_DIR Product.
+rm -rf "$ROM_DIR/product/app/DuoStub"
+rm -rf "$ROM_DIR/product/app/GoogleCalendarSyncAdapter"
+rm -rf "$ROM_DIR/product/app/SpeechServicesByGoogle"
+rm -rf "$ROM_DIR/product/priv-app/AndroidAutoStub"
+rm -rf "$ROM_DIR/product/priv-app/AndroidSystemIntelligence"
+rm -rf "$ROM_DIR/product/priv-app/GoogleRestore"
+rm -rf "$ROM_DIR/product/priv-app/Messages"
+rm -rf "$ROM_DIR/product/priv-app/SearchSelector"
