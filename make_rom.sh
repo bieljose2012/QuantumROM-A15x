@@ -9,19 +9,35 @@ fi
 MODEL=$1
 CSC=$2
 IMEI=$3
+FW_DIR="fw_download"
 
-# Start firmware download.
+# --- Setup Directories ---
 chmod +x ./scripts/download_firmware.sh
-bash ./scripts/download_firmware.sh $MODEL $CSC $IMEI $MODEL
+bash ./scripts/setup_directories.sh
 
-# Run Debloat cmd.
+# --- Start firmware download ---
+bash ./scripts/download_firmware.sh "$MODEL" "$CSC" "$IMEI" "$MODEL"
+
+# --- Extract Firmware ---
+chmod +x ./scripts/extract_firmware.sh
+bash ./scripts/extract_firmware.sh "$(pwd)/${FW_DIR}/${MODEL}" "${MODEL}_${CSC}.zip"
+
+
+# --- Run IMG Unpack cmd ---
+chmod +x ./scripts/extract_ext4.sh
+bash ./scripts/extract_ext4.sh "$(pwd)/${FW_DIR}/${MODEL}" "${MODEL}_${CSC}"
+
+# --- Run Debloat cmd ---
 chmod +x ./QuantumROM/mods/debloater.sh
-bash ./QuantumROM/mods/debloater.sh
+bash ./QuantumROM/mods/debloater.sh "$(pwd)/${FW_DIR}/${MODEL}/${MODEL}_${CSC}"
 
-# Run security disabler cmd.
+# --- Run Security Disabler cmd ---
 chmod +x ./QuantumROM/mods/security_disabler.sh
-bash ./QuantumROM/mods/security_disabler.sh
+bash ./QuantumROM/mods/security_disabler.sh "$(pwd)/${FW_DIR}/${MODEL}/${MODEL}_${CSC}"
 
-# Run img pack cmd.
+# --- Run IMG Pack cmd ---
 chmod +x ./scripts/pack_ext4.sh
-bash ./scripts/pack_ext4.sh
+bash ./scripts/pack_ext4.sh "$(pwd)/${FW_DIR}/${MODEL}" "${MODEL}_${CSC}"
+
+# --- Upload images in Google Drive ---
+# python3 upload_files.py
