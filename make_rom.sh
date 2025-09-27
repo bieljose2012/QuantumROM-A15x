@@ -36,19 +36,19 @@ bash ./scripts/extract_ext4.sh "$(pwd)/${FW_DIR}/${MODEL}"
 
 # --- Run Debloat cmd ---
 chmod +x ./QuantumROM/mods/debloater.sh
-bash ./QuantumROM/mods/debloater.sh "$(pwd)/${FW_DIR}/${MODEL}/${MODEL}"
+bash ./QuantumROM/mods/debloater.sh "$(pwd)/${FW_DIR}/${MODEL}"
 
 
 # --- Run Security Disabler cmd ---
 chmod +x ./QuantumROM/mods/security_disabler.sh
 chmod +x ./QuantumROM/mods/musti_disabler.sh
-bash ./QuantumROM/mods/security_disabler.sh "$(pwd)/${FW_DIR}/${MODEL}/${MODEL}"
-bash ./QuantumROM/mods/musti_disabler.sh "$(pwd)/${FW_DIR}/${MODEL}/${MODEL}"
+bash ./QuantumROM/mods/security_disabler.sh "$(pwd)/${FW_DIR}/${MODEL}"
+bash ./QuantumROM/mods/musti_disabler.sh "$(pwd)/${FW_DIR}/${MODEL}"
 
 
 # --- Run IMG Pack cmd ---
 chmod +x ./scripts/pack_ext4.sh
-bash ./scripts/pack_ext4.sh "$(pwd)/${FW_DIR}/${MODEL}/${MODEL}"
+bash ./scripts/pack_ext4.sh "$(pwd)/${FW_DIR}/${MODEL}"
 
 
 # --- Upload images in Google Drive ---
