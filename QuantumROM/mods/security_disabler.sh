@@ -15,6 +15,3 @@ sed -i "\~ro.frp.pst=/dev/block/bootdevice/by-name/frp~d" $ROM_DIR/product/etc/b
 # Vendor
 # Deleting $MODEL stock recovery.
 rm -f "$ROM_DIR/vendor/recovery-from-boot.p"
-
-# Runnig multidisabeler.
-bash ./musti_disabler.sh $ROM_DIR
