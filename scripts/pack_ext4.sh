@@ -48,5 +48,5 @@ done
 
 # --- Move boot.img to $OUT_DIR ---
 mv "$ROM_DIR/boot.img" "$OUT_DIR/"
-echo "Cleaning up ROM_DIR..."
+# --- Cleaning up $ROM_DIR ---
 rm -rf "$ROM_DIR"/*
