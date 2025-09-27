@@ -7,6 +7,7 @@ if [ "$#" -ne 2 ]; then
     exit 1
 fi
 
+echo "Running script: $(basename "$0")"
 FW_FILE_DIR="$1"
 FW_FILE_NAME=$2
 
