@@ -13,7 +13,6 @@ IMEI=$3
 FW_DIR=$4
 F_FOLDER=$5
 
-
 rm -rf "${FW_DIR}${F_FOLDER}"
 mkdir -p "${FW_DIR}/${F_FOLDER}"
 
