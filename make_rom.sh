@@ -31,7 +31,7 @@ bash ./scripts/extract_firmware.sh "$(pwd)/${FW_DIR}/${MODEL}" "${MODEL}.zip"
 
 # --- Run IMG Unpack cmd ---
 chmod +x ./scripts/extract_ext4.sh
-bash ./scripts/extract_ext4.sh "$(pwd)/${FW_DIR}/${MODEL}/${MODEL}"
+bash ./scripts/extract_ext4.sh "$(pwd)/${FW_DIR}/${MODEL}"
 
 
 # --- Run Debloat cmd ---
