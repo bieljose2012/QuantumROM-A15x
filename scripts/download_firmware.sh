@@ -3,7 +3,7 @@
 # Usage: bash download_firmware.sh MODEL CSC IMEI DOWNLOAD_FOLDER FIRMWARE_FOLDER
 
 if [ "$#" -ne 5 ]; then
-    echo "Usage: bash $0 MODEL CSC IMEI DOWNLOAF_FOLDER FIRMWARE_FOLDER"
+    echo "Usage: bash $0 MODEL CSC IMEI DOWNLOAD_FOLDER FIRMWARE_FOLDER"
     exit 1
 fi
 
