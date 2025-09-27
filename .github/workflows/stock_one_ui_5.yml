@@ -32,8 +32,3 @@ jobs:
       run: |
         chmod +x ./QuantumROM/Devices/${{ github.event.inputs.SUPPORT_MODEL }}/${{ github.event.inputs.SUPPORT_MODEL }}.sh
         sudo bash ./QuantumROM/Devices/${{ github.event.inputs.SUPPORT_MODEL }}/${{ github.event.inputs.SUPPORT_MODEL }}.sh
-    
-    - name: Start making ROM
-      run: |
-        chmod +x ./make_rom.sh
-        sudo bash ./make_rom.sh
