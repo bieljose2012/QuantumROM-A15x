@@ -10,6 +10,7 @@ MODEL=$1
 CSC=$2
 IMEI=$3
 FW_DIR="fw_download"
+BIN_DIR="bin"
 WORK_DIR="work"
 OUT_DIR="out"
 
@@ -47,8 +48,9 @@ bash ./QuantumROM/mods/musti_disabler.sh "$(pwd)/${FW_DIR}/${MODEL}"
 
 
 # --- Run IMG Pack cmd ---
+chmod +x ./bin/make_ext4fs
 chmod +x ./scripts/pack_ext4.sh
-bash ./scripts/pack_ext4.sh "$(pwd)/${FW_DIR}/${MODEL}"
+bash ./scripts/pack_ext4.sh "$(pwd)/${FW_DIR}/${MODEL}" "$(pwd)/${BIN_DIR}" "$(pwd)/${OUT_DIR}"
 
 
 # --- Upload images in Google Drive ---
