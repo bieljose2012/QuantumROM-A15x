@@ -10,15 +10,17 @@ MODEL=$1
 CSC=$2
 IMEI=$3
 FW_DIR="fw_download"
+WORK_DIR="work"
+OUT_DIR="out"
 
 
 # --- Setup Directories ---
 chmod +x ./scripts/download_firmware.sh
-bash ./scripts/setup_directories.sh
+bash ./scripts/setup_directories.sh "FW_DIR" "WORK_DIR" "OUT_DIR"
 
 
 # --- Start firmware download ---
-bash ./scripts/download_firmware.sh "$MODEL" "$CSC" "$IMEI" "$MODEL"
+bash ./scripts/download_firmware.sh "$MODEL" "$CSC" "$IMEI" "$FW_DIR" "$MODEL"
 
 
 # --- Extract Firmware ---
