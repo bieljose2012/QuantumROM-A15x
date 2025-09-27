@@ -1,6 +1,7 @@
 #!/bin/bash
 # download_firmware.sh
 # Usage: bash download_firmware.sh MODEL CSC IMEI DOWNLOAD_FOLDER
+set -e
 
 if [ "$#" -ne 4 ]; then
     echo "Usage: bash $0 MODEL CSC IMEI DOWNLOAD_FOLDER"
