@@ -45,3 +45,8 @@ for folder_path in "$ROM_DIR"/*; do
         -a "$partition_name" \
         "$OUT_DIR/$partition_name.img" "$ROM_DIR/$partition_name"
 done
+
+# --- Move boot.img to $OUT_DIR ---
+mv "$ROM_DIR/boot.img" "$OUT_DIR/"
+echo "Cleaning up ROM_DIR..."
+rm -rf "$ROM_DIR"/*
