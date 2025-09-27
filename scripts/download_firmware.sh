@@ -1,6 +1,6 @@
 #!/bin/bash
 # download_firmware.sh
-# Usage: bash download_firmware.sh MODEL CSC IMEI DOWNLOAF_FOLDER
+# Usage: bash download_firmware.sh MODEL CSC IMEI DOWNLOAD_FOLDER FIRMWARE_FOLDER
 
 if [ "$#" -ne 5 ]; then
     echo "Usage: bash $0 MODEL CSC IMEI DOWNLOAF_FOLDER FIRMWARE_FOLDER"
@@ -10,7 +10,7 @@ fi
 MODEL=$1
 CSC=$2
 IMEI=$3
-D_FOLDER=$4
+FW_DIR=$4
 F_FOLDER=$5
 
 
