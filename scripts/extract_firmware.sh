@@ -1,7 +1,6 @@
 #!/bin/bash
 # extract_firmware.sh
 # Usage: bash extract_firmware.sh FW_FILE_DIR FW_FILE_NAME
-set -e
 
 if [ "$#" -ne 2 ]; then
     echo "Usage: bash $0 <FW_FILE_DIR> <FW_FILE_NAME>"

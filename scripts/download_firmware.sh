@@ -1,10 +1,9 @@
 #!/bin/bash
 # download_firmware.sh
-# Usage: bash download_firmware.sh MODEL CSC IMEI DOWNLOAD_FOLDER
-set -e
+# Usage: bash download_firmware.sh MODEL CSC IMEI DOWNLOAF_FOLDER
 
 if [ "$#" -ne 4 ]; then
-    echo "Usage: bash $0 MODEL CSC IMEI DOWNLOAD_FOLDER"
+    echo "Usage: bash $0 MODEL CSC IMEI DOWNLOAF_FOLDER FIRMWARE_FOLDER"
     exit 1
 fi
 
@@ -12,11 +11,11 @@ MODEL=$1
 CSC=$2
 IMEI=$3
 D_FOLDER=$4
+F_FOLDER=$5
 
-FW_DIR="fw_download"
 
-rm -rf "${FW_DIR}${D_FOLDER}"
-mkdir -p "${FW_DIR}/${D_FOLDER}"
+rm -rf "${FW_DIR}${F_FOLDER}"
+mkdir -p "${FW_DIR}/${F_FOLDER}"
 
 echo "======================================"
 echo " Samsung FW Downloader "
@@ -37,14 +36,14 @@ else
 fi
 
 # --- Step 3: Download Firmware ---
-python3 -m samloader -m "$MODEL" -r "$CSC" -i "$IMEI" download -v "$version" -O "${FW_DIR}/${D_FOLDER}"
+python3 -m samloader -m "$MODEL" -r "$CSC" -i "$IMEI" download -v "$version" -O "${FW_DIR}/${F_FOLDER}"
 if [ $? -ne 0 ]; then
     echo "❌ Download failed. Check IMEI/MODEL/CSC."
     exit 1
 fi
 
 # --- Step 4: Decrypt Firmware ---
-enc_file=$(find "${FW_DIR}/${D_FOLDER}" -name "*.enc*" | head -n 1)
+enc_file=$(find "${FW_DIR}/${F_FOLDER}" -name "*.enc*" | head -n 1)
 
 if [ -z "$enc_file" ]; then
     echo "❌ No encrypted firmware file found!"
@@ -52,17 +51,17 @@ if [ -z "$enc_file" ]; then
 fi
 
 # --- Step 5: Decrypting firmware...
-python3 -m samloader -m "$MODEL" -r "$CSC" -i "$IMEI" decrypt -v "$version" -i "$enc_file" -o "${FW_DIR}/${D_FOLDER}/${MODEL}.zip"
+python3 -m samloader -m "$MODEL" -r "$CSC" -i "$IMEI" decrypt -v "$version" -i "$enc_file" -o "${FW_DIR}/${F_FOLDER}/${MODEL}.zip"
 if [ $? -ne 0 ]; then
     echo "❌ Decryption failed."
     exit 1
 fi
 
 # --- Show Firmware Info ---
-file_size=$(du -m "${FW_DIR}/${D_FOLDER}/${MODEL}.zip" | cut -f1)
+file_size=$(du -m "${FW_DIR}/${F_FOLDER}/${MODEL}.zip" | cut -f1)
 echo "✅ Firmware decrypted successfully!"
 echo "Firmware Size: ${file_size} MB"
-echo "Saved to: ${FW_DIR}/${D_FOLDER}/${MODEL}.zip"
+echo "Saved to: ${FW_DIR}/${F_FOLDER}/${MODEL}.zip"
 
 # --- Cleanup ---
 rm -f "$enc_file"
