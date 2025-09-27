@@ -28,7 +28,7 @@ bash ./scripts/extract_firmware.sh "$(pwd)/${FW_DIR}/${MODEL}" "${MODEL}.zip"
 
 # --- Run IMG Unpack cmd ---
 chmod +x ./scripts/extract_ext4.sh
-bash ./scripts/extract_ext4.sh "$(pwd)/${FW_DIR}/${MODEL}" "${MODEL}"
+bash ./scripts/extract_ext4.sh "$(pwd)/${FW_DIR}/${MODEL}/${MODEL}"
 
 
 # --- Run Debloat cmd ---
@@ -45,7 +45,7 @@ bash ./QuantumROM/mods/musti_disabler.sh "$(pwd)/${FW_DIR}/${MODEL}/${MODEL}"
 
 # --- Run IMG Pack cmd ---
 chmod +x ./scripts/pack_ext4.sh
-bash ./scripts/pack_ext4.sh "$(pwd)/${FW_DIR}/${MODEL}" "${MODEL}"
+bash ./scripts/pack_ext4.sh "$(pwd)/${FW_DIR}/${MODEL}/${MODEL}"
 
 
 # --- Upload images in Google Drive ---
