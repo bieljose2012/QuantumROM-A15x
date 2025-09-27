@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 if [ -z "$3" ]; then
     echo "Usage: $0 <ROM_DIR> <BIN_DIR> <OUT_DIR>"
