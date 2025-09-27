@@ -15,7 +15,7 @@ OUT_DIR="out"
 
 
 # --- Setup Directories ---
-chmod +x ./scripts/download_firmware.sh
+chmod +x ./scripts/setup_directories.sh
 bash ./scripts/setup_directories.sh "FW_DIR" "WORK_DIR" "OUT_DIR"
 
 
