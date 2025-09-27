@@ -1,68 +1,61 @@
 #!/bin/bash
 # extract_firmware.sh
-# Usage: bash extract_firmware.sh <FW_FILE_DIR>
+# Usage: bash extract_firmware.sh FW_FILE_DIR FW_FILE_NAME
 
 set -e
 
-if [ "$#" -ne 1 ]; then
-    echo "Usage: bash $0 <FW_FILE_DIR>"
+if [ "$#" -ne 2 ]; then
+    echo "Usage: bash $0 <FW_FILE_DIR> <FW_FILE_NAME>"
     exit 1
 fi
 
 echo "Running script: $(basename "$0")"
 FW_FILE_DIR="$1"
+FW_FILE_NAME="$2"
 
-# Find the firmware zip file
-FW_FILE_NAME=$(find "$FW_FILE_DIR" -maxdepth 1 -type f -name "*.zip" | head -n 1)
+echo "Extracting firmware from ${FW_FILE_NAME}..."
+7z x "${FW_FILE_DIR}/${FW_FILE_NAME}" -o"${FW_FILE_DIR}"
 
-if [ -z "$FW_FILE_NAME" ]; then
-    echo "❌ No firmware zip file found in $FW_FILE_DIR"
-    exit 1
-fi
+# Cleaning up original archive and text files
+rm -f "${FW_FILE_DIR}/${FW_FILE_NAME}"
+rm -f "${FW_FILE_DIR}"/*.txt
 
-echo "Extracting firmware from $(basename "$FW_FILE_NAME")..."
-7z x "$FW_FILE_NAME" -o"$FW_FILE_DIR"
-
-# Cleaning up original archive and text files.
-rm -f "$FW_FILE_NAME"
-rm -f "$FW_FILE_DIR"/*.txt
-
-# Renaming .md5 files to remove extension.
-for file in "$FW_FILE_DIR"/*.md5; do
+# Renaming .md5 files to remove extension
+for file in "${FW_FILE_DIR}"/*.md5; do
     [ -f "$file" ] && mv -- "$file" "${file%.md5}"
 done
 
 echo "Extracting tar files..."
-for file in "$FW_FILE_DIR"/*.tar; do
+for file in "${FW_FILE_DIR}"/*.tar; do
     if [ -f "$file" ]; then
-        tar -xvf "$file" -C "$FW_FILE_DIR"
+        tar -xvf "$file" -C "${FW_FILE_DIR}"
         rm -f "$file"
     fi
 done
 
-# Keeping only super.img.lz4 and boot.img.lz4.
-find "$FW_FILE_DIR" -type f \
+# Keep only super.img.lz4 and boot.img.lz4
+find "${FW_FILE_DIR}" -type f \
     ! -name 'super.img.lz4' \
     ! -name 'boot.img.lz4' \
     -delete
 
 echo "Decompressing .lz4 images..."
-for file in "$FW_FILE_DIR"/*.lz4; do
+for file in "${FW_FILE_DIR}"/*.lz4; do
     [ -f "$file" ] && lz4 -d "$file" "${file%.lz4}"
 done
 
-# Clean up .lz4 files and metadata after decompression
-rm -f "$FW_FILE_DIR"/*.lz4
-rm -rf "$FW_FILE_DIR/meta-data"
+# Clean up .lz4 files and metadata
+rm -f "${FW_FILE_DIR}"/*.lz4
+rm -rf "${FW_FILE_DIR}/meta-data"
 
 echo "Converting sparse super.img to raw image..."
-simg2img "$FW_FILE_DIR/super.img" "$FW_FILE_DIR/super_raw.img"
-rm -f "$FW_FILE_DIR/super.img"
-mv "$FW_FILE_DIR/super_raw.img" "$FW_FILE_DIR/super.img"
+simg2img "${FW_FILE_DIR}/super.img" "${FW_FILE_DIR}/super_raw.img"
+rm -f "${FW_FILE_DIR}/super.img"
+mv "${FW_FILE_DIR}/super_raw.img" "${FW_FILE_DIR}/super.img"
 
 echo "Unpacking super.img..."
-lpunpack -o "$FW_FILE_DIR" "$FW_FILE_DIR/super.img"
-rm -f "$FW_FILE_DIR/super.img"
-rm -f "$FW_FILE_DIR/vendor_dlkm.img"
+lpunpack -o "${FW_FILE_DIR}" "${FW_FILE_DIR}/super.img"
+rm -f "${FW_FILE_DIR}/super.img"
+rm -f "${FW_FILE_DIR}/vendor_dlkm.img"
 
-echo "✅ Firmware extraction complete."
+echo "✅ Firmware extraction complete in ${FW_FILE_DIR}"
