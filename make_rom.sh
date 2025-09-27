@@ -20,6 +20,7 @@ bash ./scripts/setup_directories.sh "FW_DIR" "WORK_DIR" "OUT_DIR"
 
 
 # --- Start firmware download ---
+chmod +x ./scripts/download_firmware.sh
 bash ./scripts/download_firmware.sh "$MODEL" "$CSC" "$IMEI" "$FW_DIR" "$MODEL"
 
 
