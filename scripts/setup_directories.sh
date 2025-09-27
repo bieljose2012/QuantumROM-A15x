@@ -1,6 +1,8 @@
 #!/bin/bash
 set -e
 
+echo "Running script: $(basename "$0")"
+
 if [ "$#" -lt 1 ]; then
     echo "Usage: $0 <dir1> <dir2> ... <dirN>"
     exit 1
