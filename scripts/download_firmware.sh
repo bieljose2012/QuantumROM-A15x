@@ -51,17 +51,17 @@ if [ -z "$enc_file" ]; then
 fi
 
 # --- Step 5: Decrypting firmware...
-python3 -m samloader -m "$MODEL" -r "$CSC" -i "$IMEI" decrypt -v "$version" -i "$enc_file" -o "${FW_DIR}/${D_FOLDER}/${MODEL}_${CSC}.zip"
+python3 -m samloader -m "$MODEL" -r "$CSC" -i "$IMEI" decrypt -v "$version" -i "$enc_file" -o "${FW_DIR}/${D_FOLDER}/${MODEL}.zip"
 if [ $? -ne 0 ]; then
     echo "❌ Decryption failed."
     exit 1
 fi
 
 # --- Show Firmware Info ---
-file_size=$(du -m "${FW_DIR}/${D_FOLDER}/${MODEL}_${CSC}.zip" | cut -f1)
+file_size=$(du -m "${FW_DIR}/${D_FOLDER}/${MODEL}.zip" | cut -f1)
 echo "✅ Firmware decrypted successfully!"
 echo "Firmware Size: ${file_size} MB"
-echo "Saved to: ${FW_DIR}/${D_FOLDER}/${MODEL}_${CSC}.zip"
+echo "Saved to: ${FW_DIR}/${D_FOLDER}/${MODEL}.zip"
 
 # --- Cleanup ---
 rm -f "$enc_file"
