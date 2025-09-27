@@ -1,5 +1,4 @@
 #!/bin/bash
-set -e
 
 if [ "$#" -ne 3 ]; then
     echo "Usage: bash $0 MODEL CSC IMEI"
