@@ -8,7 +8,7 @@ fi
 
 ROM_DIR=$1
 
-# Debloat $ROM_DIR Product.
+# Debloat Product.
 rm -rf "$ROM_DIR/product/app/DuoStub"
 rm -rf "$ROM_DIR/product/app/GoogleCalendarSyncAdapter"
 rm -rf "$ROM_DIR/product/app/SpeechServicesByGoogle"
@@ -18,7 +18,7 @@ rm -rf "$ROM_DIR/product/priv-app/GoogleRestore"
 rm -rf "$ROM_DIR/product/priv-app/Messages"
 rm -rf "$ROM_DIR/product/priv-app/SearchSelector"
 
-# Debloat $ROM_DIR System app.
+# Debloating System app.
 rm -rf "$ROM_DIR/system/system/app/AirGlance"
 rm -rf "$ROM_DIR/system/system/app/AirReadingGlass"
 rm -rf "$ROM_DIR/system/system/app/ARCore"
@@ -85,7 +85,7 @@ rm -rf "$ROM_DIR/system/system/app/SKTMemberShip_new"
 rm -rf "$ROM_DIR/system/system/app/SktUsimService"
 rm -rf "$ROM_DIR/system/system/app/TWorld"
 
-# Debloat $ROM_DIR System priv-app.
+# Debloat System priv-app.
 rm -rf "$ROM_DIR/system/system/priv-app/AirCommand"
 rm -rf "$ROM_DIR/system/system/priv-app/AppUpdateCenter"
 rm -rf "$ROM_DIR/system/system/priv-app/AREmoji"
@@ -153,3 +153,10 @@ rm -rf "$ROM_DIR/system/system/priv-app/TPhoneOnePackage"
 rm -rf "$ROM_DIR/system/system/priv-app/TPhoneSetup"
 rm -rf "$ROM_DIR/system/system/priv-app/TWorld"
 rm -rf "$ROM_DIR/system/system/priv-app/UltraDataSaving_O"
+
+# Delete unnecessary files and folders.
+rm -rf "$ROM_DIR/system/system/etc/init/boot-image.bprof"
+rm -rf "$ROM_DIR/system/system/etc/init/boot-image.prof"
+rm -rf "$ROM_DIR/system/system/hidden"
+rm -rf "$ROM_DIR/system/system/preload"
+rm -rf "$ROM_DIR/system/system/tts"
