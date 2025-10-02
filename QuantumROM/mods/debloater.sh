@@ -9,9 +9,12 @@ fi
 ROM_DIR=$1
 
 # Debloat Product.
+rm -rf "$ROM_DIR/product/app/Duo"
 rm -rf "$ROM_DIR/product/app/DuoStub"
 rm -rf "$ROM_DIR/product/app/GoogleCalendarSyncAdapter"
+rm -rf "$ROM_DIR/product/app/Photos"
 rm -rf "$ROM_DIR/product/app/SpeechServicesByGoogle"
+rm -rf "$ROM_DIR/product/priv-app/AndroidAuto"
 rm -rf "$ROM_DIR/product/priv-app/AndroidAutoStub"
 rm -rf "$ROM_DIR/product/priv-app/AndroidSystemIntelligence"
 rm -rf "$ROM_DIR/product/priv-app/GoogleRestore"
