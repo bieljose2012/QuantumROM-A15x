@@ -156,6 +156,7 @@ rm -rf "$ROM_DIR/system/system/priv-app/TPhoneOnePackage"
 rm -rf "$ROM_DIR/system/system/priv-app/TPhoneSetup"
 rm -rf "$ROM_DIR/system/system/priv-app/TWorld"
 rm -rf "$ROM_DIR/system/system/priv-app/UltraDataSaving_O"
+rm -rf "$ROM_DIR/system/system/priv-app/YourPhone_P1_5"
 
 # Delete unnecessary files and folders.
 rm -rf "$ROM_DIR/system/system/etc/init/boot-image.bprof"
