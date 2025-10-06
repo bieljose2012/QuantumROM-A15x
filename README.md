@@ -18,4 +18,6 @@ Remove unwanted pre-installed apps and optimize device performance.
 For personal linux terminal.
 
 2.  **Directory Setup:**
-```chmod +x ./scripts/setup_directories.sh && sudo bash ./scripts/setup_directories.sh
+```bash
+chmod +x ./scripts/setup_directories.sh && sudo bash ./scripts/setup_directories.sh
+
