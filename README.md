@@ -18,5 +18,4 @@ Remove unwanted pre-installed apps and optimize device performance.
 For personal linux terminal.
 
 2.  **Directory Setup:**
-```This text is also copyable.
-  It is rendered as a code block.
+```chmod +x ./scripts/setup_directories.sh && sudo bash ./scripts/setup_directories.sh
