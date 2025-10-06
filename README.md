@@ -17,7 +17,12 @@ Remove unwanted pre-installed apps and optimize device performance.
 **Linux Terminal:**
 For personal linux terminal.
 
-2.  **Directory Setup:**
+1.  **Directory Setup:**
 ```bash
-chmod +x ./scripts/setup_directories.sh && sudo bash ./scripts/setup_directories.sh
+sudo chmod +x ./scripts/setup_directories.sh && sudo bash ./scripts/setup_directories.sh
+
+2.  **Download Firmware:** [ No need if you have Firmware downloaded. If have already the firmware zip then put the firmware zip in fw_download folder ]
+```bash
+chmod +x ./scripts/download_firmware.sh
+bash ./scripts/download_firmware.sh "$MODEL" "$CSC" "$IMEI" "$FW_DIR"
 
