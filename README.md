@@ -23,7 +23,7 @@ sudo bash mod_rom_1.sh DEVICE_MODEL CSC IMEI
 ```
 
 2:  **For previous downloaded rom mod:**
-Run setup_directories.sh for make directories. Then copybthe firmware zip in fw_download folder. DEVICE_MODEL is firmware zip name. After copy Rename the firmware zip with actual device model name like SM-A225F.zip. On cmd DEVICE_MODEL is same name of firmware name without .zip extension.
+Run setup_directories.sh to create the directories. Then, copy the firmware ZIP file into the fw_download folder. DEVICE_MODEL refers to the firmware file name. After copying, rename the firmware ZIP to match the actual device model name, for example, SM-A225F.zip. In the command line, DEVICE_MODEL should be the firmware file name without the .zip extension.
 
 ```bash
 sudo chmod +x ./scripts/setup_directories.sh &&
