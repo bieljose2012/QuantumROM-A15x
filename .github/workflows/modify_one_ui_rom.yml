@@ -26,16 +26,16 @@ jobs:
 
     - name: Display captured inputs (for debugging)
       run: |
-        echo "DEVICE_MODEL: $DEVICE_MODEL"
-        echo "CSC: $CSC"
-        echo "IMEI: $IMEI"
+        echo "DEVICE_MODEL: ${{ github.event.inputs.DEVICE_MODEL }}"
+        echo "CSC: ${{ github.event.inputs.CSC }}"
+        echo "IMEI: ${{ github.event.inputs.IMEI }}"
         
     - name: Installing required packages.
       run: |
         chmod +x ./scripts/install_packages.sh
         sudo bash ./scripts/install_packages.sh
 
-    - name: Downloading and extracting ${{ github.event.inputs.SUPPORT_MODEL }} firmware.
+    - name: Downloading and extracting ${{ github.event.inputs.DEVICE_MODEL }} firmware.
       run: |
         chmod +x ./scripts/download_firmware.sh
         sudo bash ./scripts/download_firmware.sh ${{ GITHUB.EVENT.INPUTS.DEVICE_MODEL }} ${{ github.event.inputs.CSC }} ${{ github.event.inputs.IMEI }}
