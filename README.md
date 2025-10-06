@@ -14,4 +14,9 @@ Tools to bypass or remove security restrictions for enhanced customization.
 Remove unwanted pre-installed apps and optimize device performance.
 
 # Usage: For personal linux terminal.
-```chmod +x sudo ./scripts/setup_directories.sh
+
+2.  **Indented Code Blocks:** Indent every line of your code block by at least four spaces or one tab.
+
+    ```markdown
+        This text is also copyable.
+        It is rendered as a code block.
