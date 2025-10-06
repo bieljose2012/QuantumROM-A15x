@@ -16,13 +16,6 @@ jobs:
     - name: Checkout repository.
       uses: actions/checkout@v3
 
-    - name: Validate device support.
-      run: |
-        if [ ! -d "./QuantumROM/Devices/${{ github.event.inputs.SUPPORT_MODEL }}" ]; then
-          echo "⛔️ Your device '${{ github.event.inputs.SUPPORT_MODEL }}' is not ready for port target ROM."
-          exit 1
-        fi
-
     - name: Installing required packages.
       run: |
         chmod +x ./scripts/install_packages.sh
