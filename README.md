@@ -16,6 +16,9 @@ Remove unwanted pre-installed apps and optimize device performance.
 # Usage: #
 **For download and rom mod:**
 ```bash
+sudo chmod +x mod_rom_2.sh
+```
+```bash
 sudo bash mod_rom_1.sh DEVICE_MODEL CSC IMEI
 ```
 
@@ -23,9 +26,16 @@ sudo bash mod_rom_1.sh DEVICE_MODEL CSC IMEI
 Run setup_directories.sh for make directories. Then copybthe firmware zip in fw_download folder. DEVICE_MODEL is firmware zip name. After copy Rename the firmware zip with actual device model name like SM-A225F.zip. On cmd DEVICE_MODEL is same name of firmware name without .zip extension.
 
 ```bash
-sudo bash setup_directories.sh
+sudo chmod +x ./scripts/setup_directories.sh
 ```
 
+```bash
+sudo bash./scripts/setup_directories.sh
+```
+
+```bash
+sudo chmod +x mod_rom_2.sh
+```
 ```bash
 sudo bash mod_rom_2.sh DEVICE_MODEL
 ```
