@@ -14,15 +14,15 @@ Tools to bypass or remove security restrictions for enhanced customization.
 Remove unwanted pre-installed apps and optimize device performance.
 
 # Usage: #
-**For download and rom mod:**
+1:  **For download and rom mod:**
 ```bash
-sudo chmod +x mod_rom_2.sh
+sudo chmod +x mod_rom_1.sh
 ```
 ```bash
 sudo bash mod_rom_1.sh DEVICE_MODEL CSC IMEI
 ```
 
-**For previous downloaded rom mod:**
+2:  **For previous downloaded rom mod:**
 Run setup_directories.sh for make directories. Then copybthe firmware zip in fw_download folder. DEVICE_MODEL is firmware zip name. After copy Rename the firmware zip with actual device model name like SM-A225F.zip. On cmd DEVICE_MODEL is same name of firmware name without .zip extension.
 
 ```bash
