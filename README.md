@@ -1,7 +1,7 @@
 ![QuantumROM Logo](QuantumROM/logo/QuantumROM.jpg)
 
 # 
-** Direct Firmware Download.**
+**Direct Firmware Download:**
 Seamlessly fetch the latest firmware directly from Samsung’s official servers.
 
 # Image Unpack & Repack.
