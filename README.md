@@ -16,6 +16,7 @@ Remove unwanted pre-installed apps and optimize device performance.
 # Usage: #
 **Linux Terminal:**
 For personal linux terminal.
+For download and rom mod.
 ```bash
 sudo bash make_rom.sh DEVICE_MODEL CSC IMEI
 ```
