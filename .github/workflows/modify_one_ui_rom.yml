@@ -4,11 +4,8 @@ on:
   workflow_dispatch:
     inputs:
       SUPPORT_MODEL:
-        description: "==== MAKE ROM FOR ==== Device Model"
-        required: true
-        default: "SM-A225F"
       DEVICE_MODEL:
-        description: "Enter the DEVICE_MODEL (firmware file name)"
+        description: "Enter the DEVICE_MODEL."
         required: true
         default: "SM-A225F"
       CSC:
