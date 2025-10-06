@@ -1,5 +1,6 @@
 ![QuantumROM Logo](QuantumROM/logo/QuantumROM.jpg)
 
+# Tools Features:
 **Direct Firmware Download:**
 Seamlessly fetch the latest firmware directly from Samsung’s official servers.
 
