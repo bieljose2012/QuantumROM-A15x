@@ -17,7 +17,7 @@ Remove unwanted pre-installed apps and optimize device performance.
 **Linux Terminal:**
 For personal linux terminal.
 
-2.  **Indented Code Blocks:** Indent every line of your code block by at least four spaces or one tab.
+2.  **Directory Setup:**
 
     ```markdown
         This text is also copyable.
