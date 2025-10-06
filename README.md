@@ -15,5 +15,3 @@ Remove unwanted pre-installed apps and optimize device performance.
 
 # Usage: For personal linux terminal.
 ```chmod +x sudo ./scripts/setup_directories.sh
-
-```sudo bash ./scripts/setup_directories.sh
