@@ -14,6 +14,11 @@ Tools to bypass or remove security restrictions for enhanced customization.
 Remove unwanted pre-installed apps and optimize device performance.
 
 # Usage: #
+**For first time install required packages.**
+```bash
+sudo chmod +x ./scripts/install_packages.sh && sudo bash ./scripts/install_packages.sh
+```
+
 1:  **For download and rom mod:**
 ```bash
 sudo chmod +x mod_rom_1.sh
