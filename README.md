@@ -18,7 +18,6 @@ Remove unwanted pre-installed apps and optimize device performance.
 For personal linux terminal.
 
 2.  **Directory Setup:**
-
     ```markdown
         This text is also copyable.
         It is rendered as a code block.
