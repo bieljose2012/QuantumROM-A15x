@@ -28,3 +28,7 @@ sudo chmod +x ./scripts/setup_directories.sh && sudo bash ./scripts/setup_direct
 sudo chmod +x ./scripts/download_firmware.sh && sudo bash ./scripts/download_firmware.sh "$MODEL" "$CSC" "$IMEI" "$FW_DIR"
 ```
 
+3.  **Extract Firmware:**
+```bash
+sudo chmod +x ./scripts/extract_firmware.sh && sudo bash ./scripts/extract_firmware.sh "$(pwd)/${FW_DIR}/${MODEL}" "${MODEL}.zip"
+```
