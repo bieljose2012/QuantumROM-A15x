@@ -13,7 +13,9 @@ Tools to bypass or remove security restrictions for enhanced customization.
 **Rom Debloat:**
 Remove unwanted pre-installed apps and optimize device performance.
 
-# Usage: For personal linux terminal.
+# Usage: #
+**Linux Terminal:**
+For personal linux terminal.
 
 2.  **Indented Code Blocks:** Indent every line of your code block by at least four spaces or one tab.
 
