@@ -12,3 +12,5 @@ Tools to bypass or remove security restrictions for enhanced customization.
 
 # System Debloating.
 Remove unwanted pre-installed apps and optimize device performance.
+
+# Usage: For personal linux terminal.
