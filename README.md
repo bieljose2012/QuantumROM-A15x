@@ -28,6 +28,7 @@ sudo bash mod_rom_1.sh DEVICE_MODEL CSC IMEI
 ```
 
 2:  **Modifying a previously downloaded ROM:**
+
 Run ```setup_directories.sh``` to create the necessary directories.
 
 Copy the firmware ZIP file into the ```fw_download``` folder.
