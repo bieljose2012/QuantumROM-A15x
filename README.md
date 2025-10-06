@@ -19,10 +19,11 @@ For personal linux terminal.
 
 1.  **Directory Setup:**
 ```bash
-sudo chmod +x ./scripts/setup_directories.sh && sudo bash ./scripts/setup_directories.sh`````
+sudo chmod +x ./scripts/setup_directories.sh && sudo bash ./scripts/setup_directories.sh```
 
 
 2.  **Download Firmware:** [ No need if you have Firmware downloaded. If have already the firmware zip then put the firmware zip in fw_download folder ]
+
 ```bash
-sudo chmod +x ./scripts/download_firmware.sh && sudo bash ./scripts/download_firmware.sh "$MODEL" "$CSC" "$IMEI" "$FW_DIR"
+sudo chmod +x ./scripts/download_firmware.sh && sudo bash ./scripts/download_firmware.sh "$MODEL" "$CSC" "$IMEI" "$FW_DIR"```
 
