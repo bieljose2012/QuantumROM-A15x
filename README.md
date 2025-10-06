@@ -16,5 +16,10 @@ Remove unwanted pre-installed apps and optimize device performance.
 # Usage: #
 **For download and rom mod:**
 ```bash
-sudo bash make_rom.sh DEVICE_MODEL CSC IMEI
+sudo bash mod_rom_1.sh DEVICE_MODEL CSC IMEI
+```
+
+**For previous downloaded rom mod:**
+```bash
+sudo bash mod_rom_2.sh DEVICE_MODEL
 ```
