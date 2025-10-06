@@ -6,7 +6,7 @@ on:
       DEVICE_MODEL:
         description: "Enter the DEVICE_MODEL."
         required: true
-        default: "SM-A225F"
+        default: "SM-A156M"
       CSC:
         description: "Enter the CSC (Country Specific Code)"
         required: true
