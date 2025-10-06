@@ -27,7 +27,7 @@ Run setup_directories.sh for make directories. Then copybthe firmware zip in fw_
 
 ```bash
 sudo chmod +x ./scripts/setup_directories.sh &&
-sudo bash./scripts/setup_directories.sh
+sudo bash ./scripts/setup_directories.sh
 ```
 
 ```bash
